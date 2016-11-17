@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Map</title>
+    <!-- Latest compiled and minified CSS -->
+    <!-- Latest compiled and minified JS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.css' rel='stylesheet' />
+
+    <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.0.1/leaflet-omnivore.min.js'></script>
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel=stylesheet href="style.css">
+    <link rel=stylesheet href="css/tab.css">
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div id="opinion" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 solid-pink">
+        </div>
+    </div>
+</div>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--10-col">
+        <h1>Mapping Ecosystem</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h4>33 things you said</h4> (add your voice)
+        <ul id="comment-card" class="list-inline">
+            <li>Mr. Riad Salemeh and the release of Circular 331 made the game true in the Lebanese echo system, thank you </li>
+            <li>"Regarding the Circular, I believe it is a positive contribution to fostering the growth of the tech sector in Lebanon. On the other hand, the risk is to fund startups without valid business prospects, especially if the incentives of the different parties are not aligned properly.</li>
+            <li> There is a gap in human capital in the tech sector that needs to be addressed via training and education </li>
+            <li> The VCs need to invest more in start ups and take more risks, rather than invest in safe start ups .. they are very risk averse.</li>
+            <li>
+                While 331 in spirit is crucial to our ecosystem, its implementation and execution is scandalous.
+                <br> We went from 50+ banks allowed to invest directly in startups to 4-8 funds hijacking $400m of funding and its 75% guarantees for themselves [...]
+                <br>
+                <br>
+                <span class="pull-right">read more</span>
+            </li>
+            <li>I wish it wasn't centralized in limited number of VCs and banks that are all in one bundle and interconnected. some competition between the VCs and the programs would push them to provide better services.</li>
+            <li>Ecosystem finally growing in Beirut. Circular 331 took a long time to kick in but finally can see change/ results. Primarily banks/ bank partners (VC affiliate firms) understanding gist 331. I am optimistic.</li>
+            <li>Can't find tech employees anymore, they are all entrepreneurs funded by 331</li>
+        </ul>
+
+
+        <button  class=" mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Load more</button>
+
+    </div>
+</div>
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--12-col">
+     <h4>Beirut, a technology hub?</h4>
+     <ul id="nav-city" data-index ="0" data-max-index="25" class="list-inline">
+       <li  id="prv-map">Previous</li>
+       <li  id="next-map">Next</li>
+       
+   </ul>
+   
+
+   <div id="map-beirut"></div>
+
+   
+
+   <div class='map-overlay-container'>
+      <div class='map-overlay'>
+        <h2 id='location-title'></h2>
+        <p id='location-description'></p>
+        <p id= 'location-image'></p>
+        
+    </div>
+</div>
+
+</div>
+</div>
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col">
+        <h4>Overview</h4></div>
+    </div>
+    <div>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#Map" aria-controls="Map" role="tab" data-toggle="tab">Map</a></li>
+                    <li role="presentation"><a href="#Infographics" aria-controls="Infographics" role="tab" data-toggle="tab">Infographics</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Analysis</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Download</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="Map">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div id='map'></div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <ul id="country-section" class="list-inline">
+                            <li>
+                                <!-- Accent-colored raised button with ripple -->
+                                <button id="all-lebanon" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                    All Lebanon
+                                </button>
+                            </li>
+                            <li>
+                                <button id="beirut" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Beirut</button>
+                            </li>
+                            <li>
+                                <button id="mount-lebanon" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mount Lebanon</button>
+                            </li>
+                            <li>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">North</button>
+                            </li>
+                            <li>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">South</button>
+                            </li>
+                            <li>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Bekaa</button>
+                            </li>
+                        </ul>
+                        <h5>Enterpreneurial activies include:</h5>
+                        <form class="form-group" id='filters'>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                                <input id="checkbox-1" type='checkbox' name='filters' class="mdl-checkbox__input" value='mentored' checked> Mentorship</label>
+                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+                                    <input id="checkbox-2" type='checkbox' name='filters' class="mdl-checkbox__input" value='knows' checked> Networking</label>
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
+                                        <input id="checkbox-3" type='checkbox' name='filters' class="mdl-checkbox__input" value='founded' checked> Startup</label>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-4">
+                                            <input id="checkbox-4" type='checkbox' name='filters' class="mdl-checkbox__input" value='studied at' checked>Study</label>
+                                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-5">
+                                                <input id="checkbox-5" type='checkbox' name='filters' class="mdl-checkbox__input" value='hosted' checked> Hosting</label>
+                                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-6">
+                                                    <input id="checkbox-6" type='checkbox' name='filters' class="mdl-checkbox__input" value='worked at' checked> Work</label>
+                                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-7">
+                                                        <input id="checkbox-7" type='checkbox' name='filters' class="mdl-checkbox__input" value='member of' checked> Membership</label>
+                                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-8">
+                                                            <input id="checkbox-8" type='checkbox' name='filters' class="mdl-checkbox__input" value='attended in' checked> Events</label>
+                                                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-9">
+                                                                <input id="checkbox-9" type='checkbox' name='filters' class="mdl-checkbox__input" value='accelerated/incubated' checked>Acceleration/incubation</label>
+                                                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-10">
+                                                                    <input id="checkbox-10" type='checkbox' name='filters' class="mdl-checkbox__input" value='inspired' checked>Inspiration</label>
+                                                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-11">
+                                                                        <input id="checkbox-11" type='checkbox' name='filters' class="mdl-checkbox__input" value='acquired' checked>Acquisition</label>
+                                                                    </form>
+                                                                    <!-- Colored FAB button with ripple -->
+                                                                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                                                                        <i class="material-icons">add your company</i>
+                                                                    </button>
+                                                                    <label>add your company</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="Infographics">
+                                                            <img src="http://placehold.it/350x150">
+                                                            <img src="http://placehold.it/350x150">
+                                                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="messages">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum...in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor si.</div>
+                                                        <div role="tabpanel" class="tab-pane" id="settings">download</div>
+                                                    </div>
+                                                </div>
+                                                <footer class="mdl-mega-footer">
+                                                    <div class="mdl-mega-footer__middle-section">
+                                                        <div class="mdl-mega-footer__drop-down-section">
+                                                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                                                            <h1 class="mdl-mega-footer__heading">Features</h1>
+                                                            <ul class="mdl-mega-footer__link-list">
+                                                                <li><a href="#">About</a></li>
+                                                                <li><a href="#">Terms</a></li>
+                                                                <li><a href="#">Partners</a></li>
+                                                                <li><a href="#">Updates</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="mdl-mega-footer__drop-down-section">
+                                                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                                                            <h1 class="mdl-mega-footer__heading">Details</h1>
+                                                            <ul class="mdl-mega-footer__link-list">
+                                                                <li><a href="#">Specs</a></li>
+                                                                <li><a href="#">Tools</a></li>
+                                                                <li><a href="#">Resources</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="mdl-mega-footer__drop-down-section">
+                                                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                                                            <h1 class="mdl-mega-footer__heading">Technology</h1>
+                                                            <ul class="mdl-mega-footer__link-list">
+                                                                <li><a href="#">How it works</a></li>
+                                                                <li><a href="#">Patterns</a></li>
+                                                                <li><a href="#">Usage</a></li>
+                                                                <li><a href="#">Products</a></li>
+                                                                <li><a href="#">Contracts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="mdl-mega-footer__drop-down-section">
+                                                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                                                            <h1 class="mdl-mega-footer__heading">FAQ</h1>
+                                                            <ul class="mdl-mega-footer__link-list">
+                                                                <li><a href="#">Questions</a></li>
+                                                                <li><a href="#">Answers</a></li>
+                                                                <li><a href="#">Contact us</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mdl-mega-footer__bottom-section">
+                                                        <div class="mdl-logo">Title</div>
+                                                        <ul class="mdl-mega-footer__link-list">
+                                                            <li><a href="#">Help</a></li>
+                                                            <li><a href="#">Privacy & Terms</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </footer>
+                                                <!-- jQuery -->
+                                                <script src="//code.jquery.com/jquery.js"></script>
+                                                <!-- Bootstrap JavaScript -->
+                                                <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+                                                <script src="js/map.js"></script>
+                                                <script src="js/papa-parse.js"></script>
+                                                <script src="js/scripts.js"></script>
+                                                <script src="js/beirut-tour.js"></script>
+                                            </body>
+
+                                            </html>

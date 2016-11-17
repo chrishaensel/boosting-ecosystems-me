@@ -1,0 +1,146 @@
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #whatyousaid li {
+            display: none;
+        }
+        
+        .list-inline > li {
+            display: inline-block;
+        }
+        
+        .mdl-grid {
+            padding: 50px;
+        }
+
+        #comment-card li {
+            margin: 5px;
+            width: 50%;
+            display: inline;
+            float: left;
+            
+           
+            background-color: #000;
+             color: #fff;
+ 
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+            border-collapse: collapse;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            box-shadow: rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.117647) 0px 1px 5px 0px;
+            box-sizing: border-box;
+           
+            display: flex;
+            flex-direction: column;
+        
+            height: 197px;
+           
+            min-height: 100px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+            text-align: left;
+            width: 512px;
+            z-index: 1;
+            -webkit-border-horizontal-spacing: 0px;
+            -webkit-border-vertical-spacing: 0px;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            
+            font-size: 16px;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 15px;
+             display: table-cell;
+            vertical-align: middle; 
+
+           font-family: 'Merriweather', serif;
+
+
+        }
+        
+        blockquote {}
+        
+        .demo-card-wide.mdl-card {
+            width: 50%;
+        }
+        
+        .solid-pink {
+            background-color: #000;
+            color: #fff;
+            min-height: 300px;
+            width: 100%;
+        }
+        
+        #map , #map-beirut {
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            min-height: 750px;
+
+        }
+        
+        #coordinates {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+        }
+        
+        .mdl-checkbox {
+            font-size: 20px;
+            height: 40px;
+            font-weight: normal;
+        }
+        
+        #country-section li {
+            padding-bottom: 10px;
+        }
+        
+        .marker-cluster-small {
+            background-color: transparent;
+        }
+        
+        .marker-cluster-small div {
+            border: 2px solid #000;
+            background-color: rgba(255, 255, 255, .8);
+        }
+        
+        .marker-cluster-medium {
+            background-color: transparent;
+        }
+        
+        .marker-cluster-medium div {
+            border: 2px solid #000;
+            background-color: rgba(255, 255, 255, .8);
+        }
+        
+        .marker-cluster-large {
+            background-color: transparent;
+        }
+        
+        .marker-cluster-large div {
+            border: 2px solid #000;
+            background-color: rgba(255, 255, 255, .8);
+        }
+        
+        .marker-cluster div {
+            font-family: 'AvenirLT-Heavy', Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            width: 35px;
+            height: 35px;
+            margin-top: 5px;
+            margin-left: 5px;
+            text-align: center;
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 17px;
+        }
+        
+        .leaflet-bar,
+        .leaflet-control-layers {
+            border-radius: 0;
+        }

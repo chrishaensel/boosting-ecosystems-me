@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Filtering marker cluster groups</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+   <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.0.1/leaflet-omnivore.min.js'></script>
+<style>
+#filters {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #fff;
+    width: 150px;
+    padding:5px;
+}
+</style>
+<div id='map'></div>
+
+ 
+
+
+<form id='filters'>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='mentored' checked> mentored</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='knows' checked> knows</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='founded' checked> founded</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='studied at' checked> studied at</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='hosted' checked> hosted</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='worked at' checked> worked at</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='member of' checked> member of</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='attended in' checked> attended in</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='accelerated/incubated' checked> accelerated/incubated</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='inspired' checked> inspired</div>
+  <div><input type='checkbox' name='filters' onclick='showStations();' value='acquired' checked> acquired</div>
+</form>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoibWlyZWlsbGVyYWFkIiwiYSI6ImZSQURPM3cifQ.fivqJpti-Um8m38RMPWzkQ';
+// Here we don't use the second argument to map, since that would automatically
+// load in non-clustered markers from the layer. Instead we add just the
+// backing tileLayer, and then use the featureLayer only for its data.
+var map = L.mapbox.map('map')
+    .setView([33.8938408 , 35.5140457], 13)
+    .addLayer(L.mapbox.tileLayer('mapbox.streets'));
+
+var overlays = L.layerGroup().addTo(map);
+
+// we create the 'layers' variable outside of the on('ready' callback
+// so that it can be accessible in the showStations function. Otherwise,
+// JavaScript scope would prevent you from accessing it.
+var layers;
+
+var points = omnivore.csv('lebanon.data2.csv', {
+    icon: L.mapbox.marker.icon({
+        'marker-symbol': 'airport',
+        'marker-color': '59245f'
+    })
+});
+
+
+// Since featureLayer is an asynchronous method, we use the `.on('ready'`
+// call to only use its marker data once we know it is actually loaded.
+L.mapbox.featureLayer()
+
+    points.on('ready', function(e) {
+        layers = e.target;
+        showStations();
+    });
+
+var filters = document.getElementById('filters').filters;
+
+// There are many ways to filter data. Mapbox.js has the .setFilter method,
+// but it only applies to L.mapbox.featureLayer layers, and that isn't what
+// we're creating - we're making marker groups in a MarkerClusterGroup layer.
+// Thus we distill filtering down to its essential part: an 'if' statement
+// in a loop.
+function showStations() {
+    // first collect all of the checked boxes and create an array of strings
+    // like ['green', 'blue']
+    var list = [];
+    for (var i = 0; i < filters.length; i++) {
+        if (filters[i].checked) list.push(filters[i].value);
+    }
+    // then remove any previously-displayed marker groups
+    overlays.clearLayers();
+    // create a new marker group
+    var clusterGroup = new L.MarkerClusterGroup().addTo(overlays);
+    // and add any markers that fit the filtered criteria to that group.
+    layers.eachLayer(function(layer) {
+        if (list.indexOf(layer.feature.properties.labelstat) !== -1) {
+            clusterGroup.addLayer(layer);
+        }
+    });
+}
+</script>
+
+
+</body>
+</html>
